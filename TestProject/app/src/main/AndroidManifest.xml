@@ -12,20 +12,28 @@
         android:theme="@style/Theme.TestProject"
         tools:targetApi="31">
         <activity
+            android:name=".SecondActivity"
+            android:exported="false"
+            tools:ignore="AppLinkUrlError">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"></action>
+                <category android:name="android.intetnt.category.DEFAULT"></category>
+                <data android:scheme="https"></data>
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".FirstActivity"
             android:exported="false"
-            android:label="This is FirstActivity"
-            >
+            android:label="This is FirstActivity">
             <intent-filter>
-                <action android:name="com.jiyoung.testobject.ACTION_START"></action>
-                <category android:name="android.intent.category.DEFAULT"></category>
+                <action android:name="com.jiyoung.testproject.ACTION_START" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-            </activity>
+        </activity>
         <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="This is MainActivity">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
