@@ -1,4 +1,4 @@
-package com.jiyoung.testandroid
+package com.jiyoung.testproject
 
 import org.junit.Test
 
