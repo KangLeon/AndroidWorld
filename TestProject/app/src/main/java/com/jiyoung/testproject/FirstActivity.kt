@@ -20,10 +20,18 @@ class FirstActivity : AppCompatActivity() {
         Toast.makeText(this,"传入了数据，${extraData}", Toast.LENGTH_SHORT).show()
 
         button1.setOnClickListener {
-            val intent = Intent()
-            intent.putExtra("data_return", "Hello FirstActivity")
-            setResult(RESULT_OK, intent)
-            finish()
+            backData()
         }
+    }
+
+    fun backData() {
+        val intent = Intent()
+        intent.putExtra("data_return", "Hello FirstActivity")
+        setResult(RESULT_OK, intent)
+        finish()
+    }
+
+    override fun onBackPressed() {
+        backData()
     }
 }
