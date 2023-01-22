@@ -7,12 +7,15 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.ArrayAdapter
 import android.widget.Toast
-import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+
+    private val fundData = listOf("招商移动互联网", "广发医疗A","广发医疗C", "诺安成长混合", "广发多元混合", "广发双擎")
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -29,16 +32,15 @@ class MainActivity : AppCompatActivity() {
         }
 
         button0.setOnClickListener {
-            //显示intent
-//            var intent = Intent(this, FirstActivity::class.java)
-//            startActivity(intent)
-
             //隐式intent
             var fundId = "001404"
             var intent = Intent(this, FirstActivity::class.java)
             intent.putExtra("fund_id", fundId)
             startActivity.launch(intent)
         }
+
+        val adapter = ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, fundData)
+        listView.adapter = adapter
     }
 
     fun openURL() {
