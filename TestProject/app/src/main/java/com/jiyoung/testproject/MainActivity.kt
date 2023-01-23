@@ -50,6 +50,22 @@ class MainActivity : AppCompatActivity() {
         //listView
         val adapter = FundAllAdapter(this, R.layout.fund_all_cell, fundData)
         listView.adapter = adapter
+
+        val startActivity = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            if (it.resultCode === Activity.RESULT_OK) {
+                val returnedData = it.data?.getStringExtra("data_return")
+                Toast.makeText(this,"返回了数据，${returnedData}", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        listView.setOnItemClickListener { _, _, position, _ ->
+            val fundModel = fundData[position]
+
+            var fundId = fundModel.fundCode
+            var intent = Intent(this, SecondActivity::class.java)
+            intent.putExtra("fund_id", fundId)
+            startActivity.launch(intent)
+        }
     }
 
     fun openURL() {
@@ -71,5 +87,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         return  true
+    }
+
+    fun openAddFundPage() {
+
     }
 }
