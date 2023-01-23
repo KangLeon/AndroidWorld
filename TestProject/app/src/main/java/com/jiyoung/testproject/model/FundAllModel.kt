@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
+import com.jiyoung.testproject.R
 import kotlinx.android.synthetic.main.fund_all_cell.view.*
 
 class FundAllModel(var fundCode :String,
@@ -38,5 +40,29 @@ class FundAllAdapter(activity: Activity, val resourceId: Int, data: List<FundAll
             viewHolder.fundId.text = fundAllModel.fundCode
         }
         return view
+    }
+}
+
+class FundSearchAdapter(val fundArrayList: List<FundAllModel>) : RecyclerView.Adapter<FundSearchAdapter.ViewHolder>() {
+    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val fundName: TextView = view.fund_all_cell_title
+        val fundType: TextView = view.fund_all_cell_type
+        val fundId: TextView = view.fund_all_cell_id
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.fund_all_cell, parent, false)
+        return ViewHolder(view)
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val fundModel = fundArrayList[position]
+        holder.fundName.text = fundModel.fundDisplayName
+        holder.fundType.text = fundModel.fundType
+        holder.fundId.text = fundModel.fundCode
+    }
+
+    override fun getItemCount(): Int {
+        return fundArrayList.size
     }
 }

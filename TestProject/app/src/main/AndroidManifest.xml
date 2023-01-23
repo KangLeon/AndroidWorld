@@ -12,13 +12,18 @@
         android:theme="@style/Theme.TestProject"
         tools:targetApi="31">
         <activity
+            android:name=".SearchActivity"
+            android:exported="false" />
+        <activity
             android:name=".SecondActivity"
             android:exported="false"
             tools:ignore="AppLinkUrlError">
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"></action>
-                <category android:name="android.intetnt.category.DEFAULT"></category>
-                <data android:scheme="https"></data>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intetnt.category.DEFAULT" />
+
+                <data android:scheme="https" />
             </intent-filter>
         </activity>
         <activity
@@ -27,6 +32,7 @@
             android:label="基金市场">
             <intent-filter>
                 <action android:name="com.jiyoung.testproject.ACTION_START" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -36,6 +42,7 @@
             android:label="跟踪的基金">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
