@@ -17,6 +17,12 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
 
     private val fundData = ArrayList<FundAllModel>()
+    private val fundSearchActivity = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+        if (it.resultCode === Activity.RESULT_OK) {
+            val returnedData = it.data?.getStringExtra("data_return")
+            Toast.makeText(this,"返回了数据，${returnedData}", Toast.LENGTH_SHORT).show()
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -90,16 +96,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun openAddFundPage() {
-        val startActivity = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-            if (it.resultCode === Activity.RESULT_OK) {
-                val returnedData = it.data?.getStringExtra("data_return")
-                Toast.makeText(this,"返回了数据，${returnedData}", Toast.LENGTH_SHORT).show()
-            }
-        }
-
         var fundId = "001404"
         var intent = Intent(this, SearchActivity::class.java)
         intent.putExtra("fund_id", fundId)
-        startActivity.launch(intent)
+        fundSearchActivity.launch(intent)
     }
 }
