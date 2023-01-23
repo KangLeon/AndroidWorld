@@ -13,16 +13,16 @@
         tools:targetApi="31">
         <activity
             android:name=".SearchActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:label="搜索基金"/>
         <activity
             android:name=".SecondActivity"
             android:exported="false"
-            tools:ignore="AppLinkUrlError">
+            tools:ignore="AppLinkUrlError"
+            android:label="基金详情">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
-
                 <category android:name="android.intetnt.category.DEFAULT" />
-
                 <data android:scheme="https" />
             </intent-filter>
         </activity>

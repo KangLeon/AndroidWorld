@@ -51,7 +51,7 @@ class FundSearchAdapter(val fundArrayList: List<FundAllModel>) : RecyclerView.Ad
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.fund_all_cell, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.fund_search_cell, parent, false)
         return ViewHolder(view)
     }
 

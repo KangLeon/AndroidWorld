@@ -68,7 +68,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun openURL() {
+    private fun openURL() {
         var intent = Intent(Intent.ACTION_VIEW)
         intent.data = Uri.parse("http://jiyoung.cn")
         startActivity(intent)
@@ -81,7 +81,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.add_item -> Toast.makeText(this, "添加基金", Toast.LENGTH_SHORT).show()
+            R.id.add_item -> openAddFundPage()
             R.id.remove_item -> Toast.makeText(this, "编辑基金", Toast.LENGTH_SHORT).show()
             R.id.about_fund -> openURL()
         }
@@ -89,7 +89,17 @@ class MainActivity : AppCompatActivity() {
         return  true
     }
 
-    fun openAddFundPage() {
+    private fun openAddFundPage() {
+        val startActivity = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            if (it.resultCode === Activity.RESULT_OK) {
+                val returnedData = it.data?.getStringExtra("data_return")
+                Toast.makeText(this,"返回了数据，${returnedData}", Toast.LENGTH_SHORT).show()
+            }
+        }
 
+        var fundId = "001404"
+        var intent = Intent(this, SearchActivity::class.java)
+        intent.putExtra("fund_id", fundId)
+        startActivity.launch(intent)
     }
 }
