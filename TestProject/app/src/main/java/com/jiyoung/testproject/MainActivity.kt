@@ -10,11 +10,13 @@ import android.view.MenuItem
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import com.jiyoung.testproject.model.FundAllAdapter
+import com.jiyoung.testproject.model.FundAllModel
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    private val fundData = listOf("招商移动互联网", "广发医疗A","广发医疗C", "诺安成长混合", "广发多元混合", "广发双擎")
+    private val fundData = ArrayList<FundAllModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,7 +41,14 @@ class MainActivity : AppCompatActivity() {
             startActivity.launch(intent)
         }
 
-        val adapter = ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, fundData)
+        configListView()
+    }
+
+    fun configListView() {
+        fundData.add(FundAllModel("001404","招商移动互联网","招商移动互联网","股票型","招商移动互联网"))
+        fundData.add(FundAllModel("320007","诺安成长混合","诺安成长混合","混合偏股型","诺安成长混合"))
+        //listView
+        val adapter = FundAllAdapter(this, R.layout.fund_all_cell, fundData)
         listView.adapter = adapter
     }
 

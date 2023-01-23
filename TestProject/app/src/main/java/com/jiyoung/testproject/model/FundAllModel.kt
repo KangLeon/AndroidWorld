@@ -15,16 +15,27 @@ class FundAllModel(var fundCode :String,
                     var fundFullName :String)
 
 class FundAllAdapter(activity: Activity, val resourceId: Int, data: List<FundAllModel>) : ArrayAdapter<FundAllModel>(activity, resourceId, data) {
+    inner class ViewHolder(val fundName: TextView, val  fundType: TextView, val fundId: TextView)
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-        val view = LayoutInflater.from(context).inflate(resourceId, parent, false)
-        val fundName: TextView = view.fund_all_cell_title
-        val fundType: TextView = view.fund_all_cell_type
-        val fundId: TextView = view.fund_all_cell_id
+        val view: View
+        val viewHolder: ViewHolder
+        if (convertView == null) {
+            view = LayoutInflater.from(context).inflate(resourceId, parent, false)
+
+            val fundName: TextView = view.fund_all_cell_title
+            val fundType: TextView = view.fund_all_cell_type
+            val fundId: TextView = view.fund_all_cell_id
+            viewHolder = ViewHolder(fundName,fundType,fundId)
+            view.tag = viewHolder
+        }else {
+            view = convertView
+            viewHolder = view.tag as ViewHolder
+        }
         val fundAllModel = getItem(position)
         if (fundAllModel != null) {
-            fundName.text = fundAllModel.fundDisplayName
-            fundType.text = fundAllModel.fundType
-            fundId.text = fundAllModel.fundCode
+            viewHolder.fundName.text = fundAllModel.fundDisplayName
+            viewHolder.fundType.text = fundAllModel.fundType
+            viewHolder.fundId.text = fundAllModel.fundCode
         }
         return view
     }
