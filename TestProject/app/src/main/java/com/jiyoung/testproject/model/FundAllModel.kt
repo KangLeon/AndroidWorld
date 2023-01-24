@@ -5,10 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.jiyoung.testproject.R
 import kotlinx.android.synthetic.main.fund_all_cell.view.*
+import kotlinx.android.synthetic.main.fund_all_cell.view.fund_all_cell_id
+import kotlinx.android.synthetic.main.fund_all_cell.view.fund_all_cell_title
+import kotlinx.android.synthetic.main.fund_all_cell.view.fund_all_cell_type
+import kotlinx.android.synthetic.main.fund_search_cell.view.*
 
 class FundAllModel(var fundCode :String,
                     var fundName :String,
@@ -48,10 +54,17 @@ class FundSearchAdapter(val fundArrayList: List<FundAllModel>) : RecyclerView.Ad
         val fundName: TextView = view.fund_all_cell_title
         val fundType: TextView = view.fund_all_cell_type
         val fundId: TextView = view.fund_all_cell_id
+        val fundAddButton: Button = view.add_fund_button
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.fund_search_cell, parent, false)
+        val viewHolder = ViewHolder(view)
+        viewHolder.fundAddButton.setOnClickListener {
+            val position = viewHolder.bindingAdapterPosition
+            val fundModel = fundArrayList[position]
+            Toast.makeText(parent.context, "You clicked view ${fundModel.fundDisplayName}", Toast.LENGTH_SHORT).show()
+        }
         return ViewHolder(view)
     }
 

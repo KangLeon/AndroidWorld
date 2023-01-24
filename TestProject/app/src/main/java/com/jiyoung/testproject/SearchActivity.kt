@@ -3,6 +3,7 @@ package com.jiyoung.testproject
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jiyoung.testproject.model.FundAllModel
@@ -20,7 +21,19 @@ class SearchActivity : AppCompatActivity() {
         bindUI()
     }
 
-    fun bindUI() {
+    private fun bindUI() {
+        search_bar.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
+            override fun onQueryTextChange(p0: String?): Boolean {
+                Toast.makeText(this@SearchActivity,"搜索内容改变，${p0}", Toast.LENGTH_SHORT).show()
+                return false
+            }
+
+            override fun onQueryTextSubmit(p0: String?): Boolean {
+                Toast.makeText(this@SearchActivity,"点击搜索按钮，${p0}", Toast.LENGTH_SHORT).show()
+                return false
+            }
+        })
+
         var extraData = intent.getStringExtra("fund_id")
         Toast.makeText(this,"传入了数据，${extraData}", Toast.LENGTH_SHORT).show()
 
