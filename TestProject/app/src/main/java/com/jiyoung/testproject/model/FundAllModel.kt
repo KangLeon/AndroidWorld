@@ -22,6 +22,7 @@ class FundAllModel(var fundCode :String,
                     var fundType :String,
                     var fundFullName :String)
 
+//for normal
 class FundAllAdapter(activity: Activity, val resourceId: Int, data: List<FundAllModel>) : ArrayAdapter<FundAllModel>(activity, resourceId, data) {
     inner class ViewHolder(val fundName: TextView, val  fundType: TextView, val fundId: TextView)
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
@@ -49,6 +50,7 @@ class FundAllAdapter(activity: Activity, val resourceId: Int, data: List<FundAll
     }
 }
 
+// for search
 class FundSearchAdapter(val fundArrayList: List<FundAllModel>) : RecyclerView.Adapter<FundSearchAdapter.ViewHolder>() {
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val fundName: TextView = view.fund_all_cell_title
