@@ -5,6 +5,7 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -14,6 +15,7 @@ import android.view.MenuItem
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.app.NotificationCompat
 import com.jiyoung.testproject.model.FundAllAdapter
 import com.jiyoung.testproject.model.FundAllModel
 import kotlinx.android.synthetic.main.activity_main.*
@@ -43,13 +45,13 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        button0.setOnClickListener {
-            //打开基金市场，隐式intent
-            var fundId = "001404"
-            var intent = Intent(this, FirstActivity::class.java)
-            intent.putExtra("fund_id", fundId)
-            startActivity.launch(intent)
-        }
+//        button0.setOnClickListener {
+//            //打开基金市场，隐式intent
+//            var fundId = "001404"
+//            var intent = Intent(this, FirstActivity::class.java)
+//            intent.putExtra("fund_id", fundId)
+//            startActivity.launch(intent)
+//        }
 
         //创建通知channel
         val manager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
@@ -60,6 +62,11 @@ class MainActivity : AppCompatActivity() {
 
         button0.setOnClickListener {
             //发送通知给用户
+            val notification = NotificationCompat.Builder(this, "normal")
+                .setContentTitle("消息标题")
+                .setContentText("消息描述")
+                .build()
+            manager.notify(1, notification)
         }
 
         //配置ListView
