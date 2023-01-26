@@ -1,8 +1,12 @@
 package com.jiyoung.testproject
 
 import android.app.Activity
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -47,10 +51,18 @@ class MainActivity : AppCompatActivity() {
             startActivity.launch(intent)
         }
 
+        //创建通知channel
+        val manager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val channel = NotificationChannel("normal", "Normal", NotificationManager.IMPORTANCE_DEFAULT)
+            manager.createNotificationChannel(channel)
+        }
+
         button0.setOnClickListener {
             //发送通知给用户
         }
 
+        //配置ListView
         configListView()
     }
 
