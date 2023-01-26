@@ -40,11 +40,15 @@ class MainActivity : AppCompatActivity() {
         }
 
         button0.setOnClickListener {
-            //隐式intent
+            //打开基金市场，隐式intent
             var fundId = "001404"
             var intent = Intent(this, FirstActivity::class.java)
             intent.putExtra("fund_id", fundId)
             startActivity.launch(intent)
+        }
+
+        button0.setOnClickListener {
+            //发送通知给用户
         }
 
         configListView()
