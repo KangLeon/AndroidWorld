@@ -74,6 +74,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    //open external url
     private fun openURL() {
         var intent = Intent(Intent.ACTION_VIEW)
         intent.data = Uri.parse("http://jiyoung.cn")
