@@ -65,6 +65,9 @@ class MainActivity : AppCompatActivity() {
             val notification = NotificationCompat.Builder(this, "normal")
                 .setContentTitle("消息标题")
                 .setContentText("消息描述")
+                .setWhen(System.currentTimeMillis())
+                .setSmallIcon(R.drawable.tiny)
+                .setLargeIcon(BitmapFactory.decodeResource(resources, R.drawable.tiny))
                 .build()
             manager.notify(1, notification)
         }
