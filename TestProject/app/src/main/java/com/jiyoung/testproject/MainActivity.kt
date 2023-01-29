@@ -44,9 +44,9 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this,"返回了数据，${returnedData}", Toast.LENGTH_SHORT).show()
             }
         }
-
+        
+//        //打开基金市场，隐式intent
 //        button0.setOnClickListener {
-//            //打开基金市场，隐式intent
 //            var fundId = "001404"
 //            var intent = Intent(this, FirstActivity::class.java)
 //            intent.putExtra("fund_id", fundId)
@@ -60,15 +60,16 @@ class MainActivity : AppCompatActivity() {
             manager.createNotificationChannel(channel)
         }
 
+        val notification = NotificationCompat.Builder(this, "normal")
+            .setContentTitle("消息标题")
+            .setContentText("消息描述")
+            .setWhen(System.currentTimeMillis())
+            .setSmallIcon(R.drawable.tiny)
+            .setLargeIcon(BitmapFactory.decodeResource(resources, R.drawable.tiny))
+            .build()
+
         button0.setOnClickListener {
             //发送通知给用户
-            val notification = NotificationCompat.Builder(this, "normal")
-                .setContentTitle("消息标题")
-                .setContentText("消息描述")
-                .setWhen(System.currentTimeMillis())
-                .setSmallIcon(R.drawable.tiny)
-                .setLargeIcon(BitmapFactory.decodeResource(resources, R.drawable.tiny))
-                .build()
             manager.notify(1, notification)
         }
 
