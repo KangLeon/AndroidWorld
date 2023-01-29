@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this,"返回了数据，${returnedData}", Toast.LENGTH_SHORT).show()
             }
         }
-        
+
 //        //打开基金市场，隐式intent
 //        button0.setOnClickListener {
 //            var fundId = "001404"
