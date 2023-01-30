@@ -59,11 +59,14 @@ class MainActivity : AppCompatActivity() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channel = NotificationChannel("normal", "Normal", NotificationManager.IMPORTANCE_DEFAULT)
             manager.createNotificationChannel(channel)
+
+            val impChannel = NotificationChannel("important","Important", NotificationManager.IMPORTANCE_HIGH)
+            manager.createNotificationChannel(impChannel)
         }
 
         val intent = Intent(this, MainActivity::class.java)
         val pendingIntent = PendingIntent.getActivity(this,0,intent,0)
-        val notification = NotificationCompat.Builder(this, "normal")
+        val notification = NotificationCompat.Builder(this, "important")
             .setContentTitle("消息标题")
             .setContentText("消息描述")
 //            .setStyle(NotificationCompat.BigTextStyle().bigText("您当前的基金收益已经满足您的预期可以准备好卖出了，---本提示不构成投资建议，请理性投资"))
