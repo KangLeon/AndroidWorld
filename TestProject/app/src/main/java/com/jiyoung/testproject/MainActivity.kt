@@ -3,6 +3,7 @@ package com.jiyoung.testproject
 import android.app.Activity
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.graphics.BitmapFactory
@@ -60,12 +61,15 @@ class MainActivity : AppCompatActivity() {
             manager.createNotificationChannel(channel)
         }
 
+        val intent = Intent(this, NotificationActivity::class.java)
+        val pendingIntent = PendingIntent.getActivity(this,0,intent,0)
         val notification = NotificationCompat.Builder(this, "normal")
             .setContentTitle("消息标题")
             .setContentText("消息描述")
             .setWhen(System.currentTimeMillis())
             .setSmallIcon(R.drawable.tiny)
             .setLargeIcon(BitmapFactory.decodeResource(resources, R.drawable.tiny))
+            .setContentIntent(pendingIntent)
             .build()
 
         button0.setOnClickListener {
