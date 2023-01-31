@@ -17,6 +17,7 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.NotificationCompat
+import com.jiyoung.testproject.Service.BasicService
 import com.jiyoung.testproject.model.FundAllAdapter
 import com.jiyoung.testproject.model.FundAllModel
 import kotlinx.android.synthetic.main.activity_main.*
@@ -77,13 +78,18 @@ class MainActivity : AppCompatActivity() {
             .setAutoCancel(true)
             .build()
 
+        //发送普通通知给用户
+//        button0.setOnClickListener {
+//            manager.notify(1, notification)
+//        }
+
+        //启动前台server
         button0.setOnClickListener {
-            //发送通知给用户
-            manager.notify(1, notification)
+            val serviceIntent = Intent(this, BasicService::class.java)
+            startService(serviceIntent)
         }
 
         //配置ListView
-
         configListView()
     }
 
