@@ -83,6 +83,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         //配置ListView
+
         configListView()
     }
 
