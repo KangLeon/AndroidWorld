@@ -17,6 +17,7 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.NotificationCompat
+import androidx.core.view.GravityCompat
 import com.jiyoung.testproject.Service.BasicService
 import com.jiyoung.testproject.model.FundAllAdapter
 import com.jiyoung.testproject.model.FundAllModel
@@ -40,6 +41,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun bindUI() {
+        //设置第一个icon
+        supportActionBar?.let {
+            it.setDisplayHomeAsUpEnabled(true)
+            it.setHomeAsUpIndicator(com.google.android.material.R.drawable.material_ic_menu_arrow_down_black_24dp)
+        }
+
         val startActivity = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             if (it.resultCode === Activity.RESULT_OK) {
                 val returnedData = it.data?.getStringExtra("data_return")
@@ -131,6 +138,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
+            android.R.id.home -> drawerLayout.openDrawer(GravityCompat.START)
             R.id.add_item -> openAddFundPage()
             R.id.remove_item -> Toast.makeText(this, "编辑基金", Toast.LENGTH_SHORT).show()
             R.id.about_fund -> openURL()
