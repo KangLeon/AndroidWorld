@@ -47,6 +47,7 @@ class MainActivity : AppCompatActivity() {
             it.setHomeAsUpIndicator(com.google.android.material.R.drawable.material_ic_menu_arrow_down_black_24dp)
         }
 
+        
         val startActivity = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             if (it.resultCode === Activity.RESULT_OK) {
                 val returnedData = it.data?.getStringExtra("data_return")
