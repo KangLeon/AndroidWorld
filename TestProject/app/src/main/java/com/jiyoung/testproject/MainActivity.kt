@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
         //设置第一个icon
         supportActionBar?.let {
             it.setDisplayHomeAsUpEnabled(true)
-//            it.setHomeAsUpIndicator(R.drawable.tiny)
+            it.setHomeAsUpIndicator(R.drawable.home_drawer)
         }
         
         val startActivity = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
