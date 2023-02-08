@@ -40,6 +40,5 @@
         android:text="This is menu"
         android:textSize="30sp"
         >
-
     </TextView>
 </androidx.drawerlayout.widget.DrawerLayout>
