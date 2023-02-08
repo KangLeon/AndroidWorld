@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
         //设置第一个icon
         supportActionBar?.let {
             it.setDisplayHomeAsUpEnabled(true)
-            it.setHomeAsUpIndicator(R.drawable.home_drawer)
+            it.setHomeAsUpIndicator(com.google.android.material.R.drawable.material_ic_calendar_black_24dp)
         }
         
         val startActivity = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
@@ -72,18 +72,18 @@ class MainActivity : AppCompatActivity() {
             manager.createNotificationChannel(impChannel)
         }
 
-        val intent = Intent(this, MainActivity::class.java)
-        val pendingIntent = PendingIntent.getActivity(this,0,intent,0)
-        val notification = NotificationCompat.Builder(this, "important")
-            .setContentTitle("消息标题")
-            .setContentText("消息描述")
-//            .setStyle(NotificationCompat.BigTextStyle().bigText("您当前的基金收益已经满足您的预期可以准备好卖出了，---本提示不构成投资建议，请理性投资"))
-            .setWhen(System.currentTimeMillis())
-            .setSmallIcon(R.drawable.tiny)
-            .setLargeIcon(BitmapFactory.decodeResource(resources, R.drawable.tiny))
-            .setContentIntent(pendingIntent)
-            .setAutoCancel(true)
-            .build()
+//        val intent = Intent(this, MainActivity::class.java)
+//        val pendingIntent = PendingIntent.getActivity(this,0,intent,0)
+//        val notification = NotificationCompat.Builder(this, "important")
+//            .setContentTitle("消息标题")
+//            .setContentText("消息描述")
+////            .setStyle(NotificationCompat.BigTextStyle().bigText("您当前的基金收益已经满足您的预期可以准备好卖出了，---本提示不构成投资建议，请理性投资"))
+//            .setWhen(System.currentTimeMillis())
+//            .setSmallIcon(R.drawable.tiny)
+//            .setLargeIcon(BitmapFactory.decodeResource(resources, R.drawable.tiny))
+//            .setContentIntent(pendingIntent)
+//            .setAutoCancel(true)
+//            .build()
 
         //发送普通通知给用户
 //        button0.setOnClickListener {
