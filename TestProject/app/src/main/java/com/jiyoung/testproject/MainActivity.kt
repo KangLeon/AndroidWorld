@@ -53,7 +53,12 @@ class MainActivity : AppCompatActivity() {
             drawerLayout.closeDrawers()
             true
         }
-        
+
+        //设置悬浮按钮的点击事件
+        fab.setOnClickListener {
+            Toast.makeText(this, "Fab clicked", Toast.LENGTH_SHORT).show()
+        }
+
         val startActivity = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             if (it.resultCode === Activity.RESULT_OK) {
                 val returnedData = it.data?.getStringExtra("data_return")
