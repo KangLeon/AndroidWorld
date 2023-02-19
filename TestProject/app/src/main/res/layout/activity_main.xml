@@ -21,7 +21,16 @@
             android:layout_weight="1"
             >
         </ListView>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="16dp"
+            android:src="@drawable/home_drawer"
+            android:elevation="8dp">
 
+        </com.google.android.material.floatingactionbutton.FloatingActionButton>
 
         <Button
             android:id="@+id/button0"
