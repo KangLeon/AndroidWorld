@@ -46,6 +46,13 @@ class MainActivity : AppCompatActivity() {
             it.setDisplayHomeAsUpEnabled(true)
             it.setHomeAsUpIndicator(com.google.android.material.R.drawable.material_ic_calendar_black_24dp)
         }
+
+        //设置导航栏菜单项的点击事件
+        navView.setCheckedItem(R.id.navCall)
+        navView.setNavigationItemSelectedListener {
+            drawerLayout.closeDrawers()
+            true
+        }
         
         val startActivity = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             if (it.resultCode === Activity.RESULT_OK) {
