@@ -18,6 +18,7 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.NotificationCompat
 import androidx.core.view.GravityCompat
+import com.google.android.material.snackbar.Snackbar
 import com.jiyoung.testproject.Service.BasicService
 import com.jiyoung.testproject.model.FundAllAdapter
 import com.jiyoung.testproject.model.FundAllModel
@@ -56,7 +57,9 @@ class MainActivity : AppCompatActivity() {
 
         //设置悬浮按钮的点击事件
         fab.setOnClickListener {
-            Toast.makeText(this, "Fab clicked", Toast.LENGTH_SHORT).show()
+            Snackbar.make(it, "Data deleted", Snackbar.LENGTH_SHORT).setAction("Undo") {
+                Toast.makeText(this, "Fab clicked", Toast.LENGTH_SHORT).show()
+            }.show()
         }
 
         val startActivity = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
