@@ -1,20 +1,25 @@
 package com.jiyoung.testproject.model
 
 import android.app.Activity
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.jiyoung.testproject.R
 import kotlinx.android.synthetic.main.fund_all_cell.view.*
 import kotlinx.android.synthetic.main.fund_all_cell.view.fund_all_cell_id
 import kotlinx.android.synthetic.main.fund_all_cell.view.fund_all_cell_title
 import kotlinx.android.synthetic.main.fund_all_cell.view.fund_all_cell_type
+import kotlinx.android.synthetic.main.fund_all_recycle_cell.view.*
 import kotlinx.android.synthetic.main.fund_search_cell.view.*
+import org.w3c.dom.Text
 
 class FundAllModel(var fundCode :String,
                     var fundName :String,
@@ -83,3 +88,25 @@ class FundSearchAdapter(val fundArrayList: List<FundAllModel>) : RecyclerView.Ad
 }
 
 //for recycle view
+class FundAddedAdapter(val context: Context, val fundArrayList: List<FundAllModel>): RecyclerView.Adapter<FundAddedAdapter.ViewHolder>() {
+    inner class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
+        val fundImage: ImageView = view.fund_image
+        val fundName: TextView = view.fund_name
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val view = LayoutInflater.from(context).inflate(R.layout.fund_all_recycle_cell, parent, false)
+        return ViewHolder(view)
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val fundAllModel = fundArrayList[position]
+        holder.fundName.text = fundAllModel.fundDisplayName
+        val imageName = "" // TODO 拿出图片
+        Glide.with(context).load(imageName).into(holder.fundImage)
+    }
+
+    override fun getItemCount(): Int {
+        return fundArrayList.size
+    }
+}
