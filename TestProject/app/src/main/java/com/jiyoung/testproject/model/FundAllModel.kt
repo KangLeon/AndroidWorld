@@ -81,3 +81,5 @@ class FundSearchAdapter(val fundArrayList: List<FundAllModel>) : RecyclerView.Ad
         return fundArrayList.size
     }
 }
+
+//for recycle view
