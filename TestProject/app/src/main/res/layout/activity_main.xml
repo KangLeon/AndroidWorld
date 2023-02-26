@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <LinearLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -17,8 +17,7 @@
         <ListView
             android:id="@+id/listView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_height="match_parent"
             >
         </ListView>
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -31,16 +30,7 @@
             android:elevation="8dp">
 
         </com.google.android.material.floatingactionbutton.FloatingActionButton>
-
-        <Button
-            android:id="@+id/button0"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:text="Fund market"
-            />
-    </LinearLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navView"
