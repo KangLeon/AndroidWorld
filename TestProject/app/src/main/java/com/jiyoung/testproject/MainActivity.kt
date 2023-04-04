@@ -120,7 +120,7 @@ class MainActivity : AppCompatActivity() {
         fundData.add(FundAllModel("320007","诺安成长混合","诺安成长混合","混合偏股型","诺安成长混合"))
         //listView
         val adapter = FundAllAdapter(this, R.layout.fund_all_cell, fundData)
-        listView.adapter = adapter
+//        listView.adapter = adapter
 
         val startActivity = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             if (it.resultCode === Activity.RESULT_OK) {
@@ -129,14 +129,14 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        listView.setOnItemClickListener { _, _, position, _ ->
-            val fundModel = fundData[position]
-
-            var fundId = fundModel.fundCode
-            var intent = Intent(this, SecondActivity::class.java)
-            intent.putExtra("fund_id", fundId)
-            startActivity.launch(intent)
-        }
+//        listView.setOnItemClickListener { _, _, position, _ ->
+//            val fundModel = fundData[position]
+//
+//            var fundId = fundModel.fundCode
+//            var intent = Intent(this, SecondActivity::class.java)
+//            intent.putExtra("fund_id", fundId)
+//            startActivity.launch(intent)
+//        }
     }
 
     //open external url
