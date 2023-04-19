@@ -126,15 +126,14 @@ class MainActivity : AppCompatActivity() {
     private fun requestGetFundData() {
         val retrofit = Retrofit.Builder().baseUrl("http://jiyoung.cn/api/").addConverterFactory(GsonConverterFactory.create()).build()
         val apiService = retrofit.create(ApiService::class.java)
-        apiService.getFundData().enqueue(object:Callback<List<FundAllModel>> {
-            override fun onResponse(
-                call: Call<List<FundAllModel>>,
-                response: Response<List<FundAllModel>>
-            ) {
-                TODO("Not yet implemented")
+        apiService.getFundData("320007").enqueue(object : Callback<FundAllModel> {
+            override fun onResponse(call: Call<FundAllModel>, response: Response<FundAllModel>) {
+                val model = response.body()
+                if (model != null) {
+                    TODO("Not yet implemented")
+                }
             }
-
-            override fun onFailure(call: Call<List<FundAllModel>>, t: Throwable) {
+            override fun onFailure(call: Call<FundAllModel>, t: Throwable) {
                 TODO("Not yet implemented")
             }
         })
