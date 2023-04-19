@@ -19,10 +19,16 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.NotificationCompat
 import androidx.core.view.GravityCompat
 import com.google.android.material.snackbar.Snackbar
+import com.jiyoung.testproject.Service.ApiService
 import com.jiyoung.testproject.Service.BasicService
 import com.jiyoung.testproject.model.FundAllAdapter
 import com.jiyoung.testproject.model.FundAllModel
 import kotlinx.android.synthetic.main.activity_main.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class MainActivity : AppCompatActivity() {
 
@@ -42,6 +48,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun bindUI() {
+        //发起网络请求
+        requestGetFundData()
+
         //设置第一个icon
         supportActionBar?.let {
             it.setDisplayHomeAsUpEnabled(true)
@@ -112,7 +121,23 @@ class MainActivity : AppCompatActivity() {
 //        }
 
         //配置ListView
-        configListView()
+//        configListView()
+    }
+    private fun requestGetFundData() {
+        val retrofit = Retrofit.Builder().baseUrl("http://jiyoung.cn/api/").addConverterFactory(GsonConverterFactory.create()).build()
+        val apiService = retrofit.create(ApiService::class.java)
+        apiService.getFundData().enqueue(object:Callback<List<FundAllModel>> {
+            override fun onResponse(
+                call: Call<List<FundAllModel>>,
+                response: Response<List<FundAllModel>>
+            ) {
+                TODO("Not yet implemented")
+            }
+
+            override fun onFailure(call: Call<List<FundAllModel>>, t: Throwable) {
+                TODO("Not yet implemented")
+            }
+        })
     }
 
     fun configListView() {
